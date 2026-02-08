@@ -3,7 +3,7 @@ import { UserSearchPage } from '../pages';
 
 /**
  * Custom fixture that provides page objects.
- * Tests import `test` from this file.
+ * Built-in fixtures like `request` are still available to tests.
  */
 export const test = base.extend<{
   pages: {

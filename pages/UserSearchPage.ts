@@ -34,10 +34,8 @@ export class UserSearchPage extends BasePage {
     await this.assertSearchBarInteractable();
     await this.assertSubmitButtonReady();
 
-    // Use BasePage helpers that accept locators
     await this.fill(this.loc.searchBar, username, 'Search bar');
 
-    // Start waiting BEFORE click to avoid race conditions
     const responsePromise = this.waitForGitHubUserSearchResponse(username);
     await this.click(this.loc.submitButton, 'Search button');
 
@@ -79,7 +77,6 @@ export class UserSearchPage extends BasePage {
 
     expect(logins.length, 'Should have logins to validate in UI').toBeGreaterThan(0);
 
-    // Prefer role=link first
     for (const login of logins) {
       const link = this.page.getByRole('link', { name: new RegExp(`^${escapeRegExp(login)}$`, 'i') });
       const visible = await link.first().isVisible().catch(() => false);
@@ -89,7 +86,6 @@ export class UserSearchPage extends BasePage {
       }
     }
 
-    // Fallback to text
     for (const login of logins) {
       const txt = this.page.getByText(new RegExp(`\b${escapeRegExp(login)}\b`, 'i'));
       const visible = await txt.first().isVisible().catch(() => false);

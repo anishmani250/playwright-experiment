@@ -1,5 +1,5 @@
 {
-  "name": "playwright-gh-user-search-final",
+  "name": "playwright-gh-user-search-final-api-notoken",
   "version": "1.0.0",
   "private": true,
   "scripts": {

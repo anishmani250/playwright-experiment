@@ -12,10 +12,7 @@ export class UserSearchLocators extends BasePage {
   constructor(page: Page) {
     super(page);
 
-    // data-testid="search-bar"
     this.searchBar = this.page.getByTestId('search-bar');
-
-    // Required: getByRole with accessible name
     this.submitButton = this.page.getByRole('button', { name: /search/i });
   }
 }
