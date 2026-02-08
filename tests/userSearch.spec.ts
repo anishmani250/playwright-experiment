@@ -1,11 +1,6 @@
-import { test } from '@playwright/test';
-import { UserSearchPage } from '../pages/UserSearchPage';
+import { test } from '../fixtures/pagesFixture';
 
-test.describe('GH Users - User Search', () => {
-  test('searches and verifies UI contains returned users', async ({ page }) => {
-    const userSearch = new UserSearchPage(page);
-
-    await userSearch.goto();
-    await userSearch.searchUser('octocat');
-  });
+test('User search works @pages', async ({ pages }) => {
+  await pages.userSearch.open();
+  await pages.userSearch.searchUser('octocat');
 });
